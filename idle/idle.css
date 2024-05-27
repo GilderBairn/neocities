@@ -1,0 +1,306 @@
+body {
+    letter-spacing: 0.05em;
+}
+
+summary {
+    cursor: pointer;
+}
+
+details {
+    margin-bottom: 1em;
+}
+
+button {
+    font-family: papernotes;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: auto 15em 15em auto;
+    grid-template-rows: 5em 30em 5em;
+}
+
+#current-equip {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    border-top: solid 1px var(--cat-fg-light);
+}
+
+#funds {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#funds-text {
+    padding: 0.5em;
+    background-color: var(--cat-green);
+    color: var(--cat-bg-dark);
+    min-width: 3em;
+    text-align: center;
+}
+
+#quick-stats {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#fish-caught {
+    padding: 0.5em;
+    background-color: var(--cat-sapphire);
+    color: var(--cat-bg-dark);
+    min-width: 3em;
+    text-align: center;
+}
+
+#store {
+    grid-row: 1 / 4;
+    grid-column: 4 / 5;
+    border-top: solid 1px var(--cat-fg-light);
+    overflow-y: auto;
+}
+
+#fish-panel {
+    grid-row: 2 / 4;
+    grid-column: 2 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#menu {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+#menu button {
+    margin-right: 2em;
+}
+
+#bucket-persec, #bucket-size {
+    color: var(--cat-sapphire)
+}
+
+button.FISH {
+    background-color: var(--cat-bg-dark);
+    width: 8rem;
+    min-height: 3rem;
+    font-size: 18pt;
+    font-weight: bold;
+    color: var(--cat-sapphire);
+    border: solid 1px var(--cat-sapphire);
+    border-radius: 10px;
+    transition: 0.1s;
+    margin: 3em 0em 1em 0em;
+}
+button.FISH:hover {
+    background-color: var(--cat-sapphire);
+    color: var(--cat-bg-dark);
+    border: none;
+    transform: scale(110%) rotate(-5deg);
+}
+button.FISH:active {
+    transform: scale(80%) rotate(10deg);
+}
+
+#fish-log {
+    text-align: left;
+    overflow: auto;
+    width: 90%;
+    margin-top: 1em;
+}
+
+.fish-log-entry {
+    margin: 0.25em 0em;
+}
+
+.common {
+    color: var(--cat-sapphire);
+}
+.uncommon {
+    color: var(--cat-rosewater);
+}
+.rare {
+    color: var(--cat-red);
+}
+.superrare {
+    color: var(--cat-teal);
+}
+.legendary {
+    color: var(--cat-peach);
+}
+.absurd {
+    color: var(--cat-mauve);
+}
+.fish-log-entry .weight, td .weight {
+    color: var(--cat-blue);
+}
+.fish-log-entry .price, .bucket-log-entry .price {
+    color: var(--cat-green);
+}
+
+@keyframes fish-particle-anim-1 {
+    0% {opacity: 100%; transform:  translate(-50%,  -50%)  rotate( 60deg);}
+    10% {opacity: 100%; transform: translate(-100%, -150%) rotate( 48deg);}
+    20% {opacity: 100%; transform: translate(-150%, -225%) rotate( 36deg);}
+    30% {opacity: 100%; transform: translate(-200%, -275%) rotate( 24deg);}
+    40% {opacity: 100%; transform: translate(-250%, -300%) rotate( 12deg);}
+    50% {opacity: 100%; transform: translate(-300%, -275%) rotate(  0deg);}
+    60% {opacity: 100%; transform: translate(-350%, -225%) rotate(-12deg);}
+    70% {opacity: 100%; transform: translate(-400%, -150%) rotate(-24deg);}
+    80% {opacity: 70%; transform:  translate(-450%, -50%) rotate(-36deg);}
+    90% {opacity: 30%; transform:  translate(-500%,  75%)  rotate(-48deg);}
+    100% {opacity: 0%; transform:  translate(-550%, 225%)  rotate(-60deg);}
+}
+@keyframes fish-particle-anim-2 {
+    0% {opacity: 100%; transform:  translate(-50%,  -50%)  rotate(-60deg);}
+    10% {opacity: 100%; transform: translate(   0%, -150%) rotate(-48deg);}
+    20% {opacity: 100%; transform: translate( 50%, -225%)  rotate(-36deg);}
+    30% {opacity: 100%; transform: translate( 100%, -275%) rotate(-24deg);}
+    40% {opacity: 100%; transform: translate( 150%, -300%) rotate(-12deg);}
+    50% {opacity: 100%; transform: translate( 200%, -275%) rotate(  0deg);}
+    60% {opacity: 100%; transform: translate( 250%, -225%) rotate( 12deg);}
+    70% {opacity: 100%; transform: translate( 300%, -150%) rotate( 24deg);}
+    80% {opacity: 70%; transform:  translate( 350%, -50%)  rotate( 36deg);}
+    90% {opacity: 30%; transform:  translate( 400%,  75%)  rotate( 48deg);}
+    100% {opacity: 0%; transform:  translate( 450%, 225%)  rotate( 60deg);}
+}
+@keyframes fish-particle-anim-3 {
+    0% {opacity: 100%; transform:  translate(-50%,  -50%)  rotate(-60deg);}
+    10% {opacity: 100%; transform: translate(-100%, -125%) rotate(-48deg);}
+    20% {opacity: 100%; transform: translate(-150%, -175%)  rotate(-36deg);}
+    30% {opacity: 100%; transform: translate(-200%, -200%) rotate(-24deg);}
+    40% {opacity: 100%; transform: translate(-250%, -175%) rotate(-12deg);}
+    50% {opacity: 100%; transform: translate(-300%, -125%) rotate(  0deg);}
+    60% {opacity: 100%; transform: translate(-350%, -50%) rotate( 12deg);}
+    70% {opacity: 100%; transform: translate(-400%, 50%) rotate( 24deg);}
+    80% {opacity: 70%; transform:  translate(-450%, 175%)  rotate( 36deg);}
+    90% {opacity: 30%; transform:  translate(-500%, 325%)  rotate( 48deg);}
+    100% {opacity: 0%; transform:  translate(-550%, 500%)  rotate( 60deg);}
+}
+@keyframes fish-particle-anim-4 {
+    0% {opacity: 100%; transform:  translate(-50%,  -50%)  rotate(60deg);}
+    10% {opacity: 100%; transform: translate(   0%, -125%) rotate(48deg);}
+    20% {opacity: 100%; transform: translate( 50%, -175%)  rotate(36deg);}
+    30% {opacity: 100%; transform: translate( 100%, -200%) rotate(24deg);}
+    40% {opacity: 100%; transform: translate( 150%, -175%) rotate(12deg);}
+    50% {opacity: 100%; transform: translate( 200%, -125%) rotate(  0deg);}
+    60% {opacity: 100%; transform: translate( 250%, -50%)  rotate( -12deg);}
+    70% {opacity: 100%; transform: translate( 300%, 50%)   rotate( -24deg);}
+    80% {opacity: 70%; transform:  translate( 350%, 175%)  rotate( -36deg);}
+    90% {opacity: 30%; transform:  translate( 400%, 325%)  rotate( -48deg);}
+    100% {opacity: 0%; transform:  translate( 450%, 500%)  rotate(-60deg);}
+}
+
+.fish-particle {
+    user-select: none;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    /*animation-name: fish-particle-anim;*/
+    animation-duration: 550ms;
+    /*animation-duration: 5250ms;*/
+    animation-timing-function: linear;
+}
+
+.store-upgrade {
+    padding: 1em;
+    border-bottom: solid 1px var(--cat-fg-light);
+}
+.store-upgrade .column, #current-equip.column-group .column, .inventory-item .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.upgr-name, .equip-name {
+    background-color: var(--cat-fg-light);
+    color: var(--cat-bg-dark);
+    padding: 5px;
+}
+.upgr-desc, .equip-descrip {
+    margin: 0.5em 0em;
+}
+.cur-upgr-lvl {
+    color: var(--cat-blue);
+}
+button.upgr-lvlup, button.blue-btn {
+    color: var(--cat-blue);
+    border: solid 1px var(--cat-blue);
+    padding: 0.5em 1em;
+    background-color: var(--cat-bg-dark);
+    margin-top: 1em;
+}
+button.upgr-lvlup:hover, button.blue-btn:hover {
+    background-color: var(--cat-blue);
+    color: var(--cat-bg-dark);
+}
+
+button.green-btn {
+    color: var(--cat-green);
+    border: solid 1px var(--cat-green);
+    padding: 0.5em 1em;
+    background-color: var(--cat-bg-dark);
+    margin-top: 1em;
+}
+button.green-btn:hover {
+    background-color: var(--cat-green);
+    color: var(--cat-bg-dark);
+}
+
+button.red-btn {
+    color: var(--cat-red);
+    border: solid 1px var(--cat-red);
+    padding: 0.5em 1em;
+    background-color: var(--cat-bg-dark);
+    margin-top: 1em;
+}
+button.red-btn:hover {
+    background-color: var(--cat-red);
+    color: var(--cat-bg-dark);
+}
+
+#inventory {
+    border-top: solid 1px var(--cat-fg-light);
+    overflow-y: auto;
+}
+
+.inventory-item {
+    padding: 1em;
+    border-bottom: solid 1px var(--cat-fg-light);
+}
+
+button:disabled {
+    border: dashed 1px var(--cat-fg-light);
+    color: var(--cat-bg-x-light);
+    cursor: not-allowed;
+}
+button:disabled:hover {
+    border: dashed 1px var(--cat-fg-light);
+    color: var(--cat-bg-x-light);
+    background-color: #00000000;
+}
+
+table.stats {
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+table.stats th {
+    padding: 1em;
+    font-weight: normal;
+    border: 1px solid var(--cat-fg-light);
+}
+table.stats td{
+    border: 1px dashed var(--cat-fg-light);
+    margin: 0px;
+    padding: 0.5em 1em;
+}

@@ -1,0 +1,55 @@
+@font-face {
+    font-family: DOS;
+    src: url(Perfect_DOS_VGA_437.ttf);
+}
+
+body {
+  margin: 0px;
+}
+
+.page-content {
+  z-index: 2;
+  position: relative;
+  max-width: 100vw;
+  padding: 1rem;
+}
+
+.journal-container {
+  width: 70vw;
+  color: transparent;
+  font-size: 1.45rem;
+  font-family: DOS;
+  text-shadow: 0px 0px 1px #ff9;
+}
+
+.journal-section {
+  display: flex;
+  justify-content: center;
+}
+
+.journal-container p {
+  width: 100%;
+}
+
+.scanline {
+  z-index: 999;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+
+  background: repeating-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3) 5px, rgba(0, 0, 0, 0) 10px);
+}
+
+.screen-bg {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(#ff93, #0000);
+  position: fixed;
+  z-index: 1;
+  background-color: #080808;
+}
+
+.text-deform {
+
+}

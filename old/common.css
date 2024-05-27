@@ -1,0 +1,301 @@
+@font-face {
+    font-family: soulmaze;
+    src: url(MADE_SoulMaze_personal.otf);
+}
+
+@font-face {
+    font-family: papernotes;
+    src: url(Papernotes.otf);
+}
+
+:root {
+    --palette-dark: #3d405b;
+    --palette-light: #F4F1DE;
+    --palette-red: #E07A5F;
+    --palette-tan: #F2CC8F;
+    --palette-green: #81B29A;
+
+    /* catppuccin */
+    --cat-bg-dark: rgb(30, 30, 46);
+    --cat-fg-light: rgb(205, 214, 244);
+    --cat-lavender: rgb(180, 190, 254);
+    --cat-blue: rgb(137, 180, 250);
+    --cat-rosewater: rgb(245, 224, 220);
+	--cat-flamingo: rgb(242, 205, 205);
+	--cat-pink: rgb(245, 194, 231);
+	--cat-mauve: rgb(203, 166, 247);
+	--cat-red: rgb(243, 139, 168);
+	--cat-maroon: rgb(235, 160, 172);
+	--cat-peach: rgb(250, 179, 135);
+	--cat-yellow: rgb(249, 226, 175);
+	--cat-green: rgb(166, 227, 161);
+	--cat-teal: rgb(148, 226, 213);
+	--cat-sky: rgb(137, 220, 235);
+	--cat-sapphire: rgb(116, 199, 236);
+    --cat-latte-base: #eff1f5;
+    --cat-bg-x-dark: rgb(24, 25, 38);
+    --cat-bg-x-light: rgb(91, 96, 120);
+}
+
+a {
+    text-decoration: none;
+    margin: 0.5em 0.25em;
+    padding: 0.5em 1em;
+}
+
+.main-text {
+    color: var(--cat-fg-light);
+    font-family: papernotes;
+    font-size: 14pt;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    min-height: 0px;
+    overflow: auto;
+}
+
+a.lavender {
+    color: var(--cat-lavender);
+}
+a.lavender:active, a.lavender:hover {
+    background-color: var(--cat-lavender);
+    color: var(--cat-bg-dark);
+}
+
+a.blue {
+    color: var(--cat-blue);
+}
+a.blue:active, a.blue:hover {
+    background-color: var(--cat-blue);
+    color: var(--cat-bg-dark);
+}
+
+a.green {
+    color: var(--cat-green);
+}
+a.green:active, a.green:hover {
+    background-color: var(--cat-green);
+    color: var(--cat-bg-dark);
+}
+
+a.teal {
+    color: var(--cat-teal);
+}
+a.teal:active, a.teal:hover {
+    background-color: var(--cat-teal);
+    color: var(--cat-bg-dark);
+}
+
+a.pink {
+    color: var(--cat-pink);
+}
+a.pink:active, a.pink:hover {
+    background-color: var(--cat-pink);
+    color: var(--cat-bg-dark);
+}
+
+a.mauve {
+    color: var(--cat-mauve);
+}
+a.mauve:active, a.mauve:hover {
+    background-color: var(--cat-mauve);
+    color: var(--cat-bg-dark);
+}
+
+a.peach {
+    color: var(--cat-peach);
+}
+a.peach:active, a.peach:hover {
+    background-color: var(--cat-peach);
+    color: var(--cat-bg-dark);
+}
+
+a.yellow {
+    color: var(--cat-yellow);
+}
+a.yellow:active, a.yellow:hover {
+    background-color: var(--cat-yellow);
+    color: var(--cat-bg-dark);
+}
+
+a.red {
+    color: var(--cat-red);
+}
+a.red:active, a.red:hover {
+    background-color: var(--cat-red);
+    color: var(--cat-bg-dark);
+}
+
+a.sapphire {
+    color: var(--cat-sapphire);
+}
+a.sapphire:active, a.sapphire:hover {
+    background-color: var(--cat-sapphire);
+    color: var(--cat-bg-dark);
+}
+
+.splash-text {
+    font-family: soulmaze;
+    font-size: 12rem;
+    color: #000000E0;
+    text-shadow: #000000E0 0 0 5px;
+    user-select: none;
+    width: 40rem;
+}
+
+.splash-container {
+    padding: 1em;
+}
+
+#cursor-emoji {
+    position: absolute;
+    z-index: 9000;
+    font-size: 8em;
+    transform: translate(-50%, -50%);
+    font-family: Arial;
+}
+
+body {
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--cat-bg-dark);
+    /*cursor: none;*/
+}
+
+#bg-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    user-select: none;
+    z-index: -10;
+}
+
+@keyframes glyphs-anim {
+    0% {transform: translate(100vw, 0);}
+    100% {transform: translate(-100%, 0);}
+}
+
+@keyframes glyphs-anim-inverse {
+    0% {transform: translate(-100%, 0);}
+    100% {transform: translate(100vw, 0);}
+}
+
+
+.glyphset {
+    font-size: 1em;
+    font-weight: bold;
+    /*transform: rotate(-30deg);*/
+    width: 5em;
+    position: absolute;
+    /* animation-name: glyphs-anim;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; */
+    /* text-shadow: #000000 0 0 10px; */
+    /*animation-timing-function: cubic-bezier(.05,.35,.91,.61);*/
+    /*animation-direction: alternate;*/
+}
+
+.glyphset.inverse {
+    animation-name: glyphs-anim-inverse;
+}
+
+.main-content-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding: 2em 2em 0em 2em;
+}
+
+.pseudo-window {
+    border-radius: 10px;
+    border: solid var(--cat-bg-x-light) 5px;
+    background-color: var(--cat-bg-dark);
+    box-shadow: var(--cat-bg-x-light) 8px 8px 0px;
+}
+
+.main-panel {
+    min-height: 20em;
+    flex-basis: 35em;
+    flex-grow: 12;
+    max-width: 70em;
+}
+
+.menu-bar {
+    border-bottom: solid var(--cat-bg-x-light) 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bean-profile {
+    max-width: 80vw;
+    width: 14em;
+    margin-bottom: 1em;
+    margin-left: 1.5em;
+}
+
+div.bean-profile img {
+    max-width: 100%;
+}
+
+.bean-profile p {
+    margin: 1em 1em;
+}
+
+.bean-profile h4 {
+    margin: 0em 1em;
+    text-align: center;
+}
+
+h4 {
+    font-size: 20pt;
+}
+h2 {
+    font-size: 32pt;
+}
+
+/* div.menu-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+img.expl {
+    position: absolute;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+#bean-pic {
+    cursor: pointer;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.link-set {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+body.main-text p {
+    margin: 0em 1em;
+}
+
+.column-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+.column {
+    flex-basis: 10em;
+    flex-grow: 1;
+}

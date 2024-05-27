@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+    <title>webcam test</title>
+</head>
+<body style="margin: 0px;">
+<script>
+    let firstOutput = true
+    const num_channel_values = 8;
+    const quant_const = Math.ceil(256 / num_channel_values)
+
+    function quantize(img) {
+        for (let i = 0; i < img.data.length; i+=4) {
+            let r = img.data[i]
+            let g = img.data[i+1]
+            let b = img.data[i+2]
+            let rquant = Math.floor(r / quant_const);
+            let gquant = Math.floor(g / quant_const);
+            let bquant = Math.floor(b / quant_const);
+            img.data[i] = rquant * Math.ceil(256/num_channel_values);
+            img.data[i+1] = gquant * Math.ceil(256/num_channel_values);
+            img.data[i+2] = bquant * Math.ceil(256/num_channel_values);
+        }
+        return img
+    }
+
+    function grayscale(img) {
+        for (let i = 0; i < img.data.length; i+=4) {
+            let r = img.data[i]
+            let g = img.data[i+1]
+            let b = img.data[i+2]
+            let grayscale = (0.299*g) + (0.587*g) + (0.114*b);
+            img.data[i] = grayscale;
+            img.data[i+1] = grayscale;
+            img.data[i+2] = grayscale;
+        }
+        return img;
+    }
+
+    // Put event listeners into place
+     window.addEventListener("DOMContentLoaded", function() {
+         // Grab elements, create settings, etc.
+         var canvas = document.getElementById("canvas"),
+             context = canvas.getContext("2d"),
+             video = document.getElementById("video"),
+             videoObj = { 
+                 video: {
+                     mandatory: {
+                         minWidth: 1280,
+                         minHeight: 720,
+                         /*Added by Chad*/
+                         maxWidth: 1280,
+                         maxHeight: 720
+                     }
+                 }
+             },
+             errBack = function(error) {
+                 console.log("Video capture error: ", error.code); 
+             };
+
+         // Put video listeners into place
+         
+        navigator.mediaDevices.getUserMedia({ 'video': true, 'audio': false })
+        .then(stream => {
+            video.srcObject = stream;
+            video.play();
+        })
+        .catch(err => console.log(err));
+
+         /*
+             video : video source tag
+             320,0 : the shift coords
+             320,180 : the canvas size
+             0,0 : no shift in the canvas
+             640,360 : important ! it’s the native resolution of video source
+         */
+         context.scale(1.5,1.5);
+
+         function loop(){
+            context.drawImage(video, 0, 0, 1280, 720, 0, 0, 1280, 720);
+            context.putImageData(quantize(context.getImageData(0,0,1280,720)),0,0)
+            setTimeout(loop, 1000 / 30);
+         }
+
+         loop();
+
+
+     }, false);
+</script>
+ <video id="video" height="1080" width="1920" autoplay></video>
+ <canvas id="canvas" height="720" width="1280"></canvas>
+</body>
