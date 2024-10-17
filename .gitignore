@@ -1,4 +1,6 @@
 *.otf
+*.ttf
+*.zip
 Utils/
 images/
 not in use/

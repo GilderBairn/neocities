@@ -1,7 +1,7 @@
-//document.addEventListener("DOMContentLoaded", initiateTextyBG);
+document.addEventListener("DOMContentLoaded", initiateTextyBG);
 document.addEventListener("DOMContentLoaded", initBeanPicExplosion);
 window.addEventListener("mousemove", trackMouse)
-//window.addEventListener("resize", initiateTextyBG);
+window.addEventListener("resize", initiateTextyBG);
 
 let window_y_em = undefined;
 let window_x_em = undefined;
@@ -42,7 +42,7 @@ const pico_color_vars = [
 const rand_symbols = '<>/;\\|-=!@#$%^&*(){}[]€Œƒ¥¤£¢¡§µ¿°※⊕⊗⊖⊘⊱⊰▚★☆☿♀♁♂♃♄♅♆♇♠♣♥♦♡♢♤♧⚥⚦⚧⚳⚴⛭✜✱';
 
 function pickRandCatColor() {
-    return pico_color_vars[Math.floor(Math.random() * pico_color_vars.length)];
+    return catppuccin_color_vars[Math.floor(Math.random() * catppuccin_color_vars.length)];
 }
 
 function pickRandSymbol(length) {
@@ -57,7 +57,7 @@ function pickRandSymbol(length) {
 function generateTextSpan(x, y) {
     let element = document.createElement("span");
     element.className = `glyphset` //${inverted ? ' inverse' : ''}`;
-    element.style.color = '#000000';
+    element.style.color = `var(${pickRandCatColor()})`;
     element.style.top = `${y}rem`;
     element.style.left = `${x}rem`;
     element.style.opacity = '0.5';
@@ -81,6 +81,10 @@ function initiateTextyBG() {
     }
     readWindowDims();
     let bg = document.getElementById("bg-container");
+
+    if (!bg) {
+        return
+    }
     while(bg.firstChild) {
         bg.removeChild(bg.lastChild);
     }
@@ -89,16 +93,29 @@ function initiateTextyBG() {
     const ySize = window_y_em;
     //const animDuration = 16;
 
-    // function randomizeSomeSymbols() {
-    //     for (let i = 0; i < bg.children.length; i++) {
-    //         if (Math.floor(Math.random()*6) <= 1)
-    //         {
-    //             bg.children[i].innerText = pickRandSymbol(1);
-    //         }
-    //     }
-    // }
+    for (let i = 0; i < xSize; i+=4) {
+        for (let j = 0; j < ySize; j+=4) {
+            let x = i;
+            let y = j;
+            if ((j / 4) % 2 == 0) {
+                x += 2;
+            }
+            let newTextElement = generateTextSpan(x, y);
+            newTextElement.innerText = pickRandSymbol(1); //Math.floor(Math.random() * 3));
+            bg.appendChild(newTextElement);
+        }
+    }
 
-    function spawnRandomGlyph() {
+    function randomizeSomeSymbols() {
+        for (let i = 0; i < bg.children.length; i++) {
+            if (Math.floor(Math.random()*6) <= 1)
+            {
+                bg.children[i].innerText = pickRandSymbol(1);
+            }
+        }
+    }
+
+    /*function spawnRandomGlyph() {
         console.log('spawning glyph...');
         let x = Math.floor(Math.random() * xSize)
         let y = Math.floor(Math.random() * ySize)
@@ -108,9 +125,9 @@ function initiateTextyBG() {
         bg.appendChild(spanElement);
         let flickerInterval = setInterval(() => spanElement.innerText = pickRandSymbol(1), 100);
         setTimeout(() => { bg.removeChild(spanElement); clearInterval(flickerInterval)}, 500);
-    }
+    }*/
     
-    RandomizeSymbolInterval = setInterval(spawnRandomGlyph, 2000);
+    RandomizeSymbolInterval = setInterval(randomizeSomeSymbols, 500);
 }
 
 function resizeIframe(obj) {
@@ -119,6 +136,10 @@ function resizeIframe(obj) {
 
 function initBeanPicExplosion() {
     let beanPic = document.getElementById("bean-pic");
+
+    if (!beanPic) {
+        return
+    }
     beanPic.addEventListener("click", createExplosionGif)
 }
 
