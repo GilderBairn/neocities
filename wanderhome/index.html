@@ -4,12 +4,55 @@
         <title>Wanderhome keeper helper</title>
         <link href="/common.css" rel="stylesheet"/>
         <link href="wanderhome.css" rel="stylesheet"/>
-        <scrpit src="/common.js"></scrpit>
+        <script src="/common.js"></script>
         <script src="wanderhome.js"></script>
     </head>
     <body>
+        <h1>Wanderhome locations & kith generator</h1>
+        <form id="wh_gen_inputs">
+            <label for="start-month">Starting month</label>
+            <select name="start-month" value="0">
+                <option value="0">Tillsoil (Leap)</option>
+                <option value="1">Monsoon (Leap)</option>
+                <option value="2">Bloommeadow (Bright)</option>
+                <option value="3">Devildays (Bright)</option>
+                <option value="4">Swarming (Breathe)</option>
+                <option value="5">Gateling (Breathe)</option>
+                <option value="6">Firetop (Silt)</option>
+                <option value="7">Grasping (Silt)</option>
+                <option value="8">Snowblanket (Chill)</option>
+                <option value="9">Frostbite (Chill)</option>
+            </select>
+            <label for="num-months">Months to generate</label>
+            <input type="number" name="num-months" value="10" min="1" max="100000000000"/>
+            <label for="num-months">Include magic?</label>
+            <div>
+            <input type="checkbox" name="include-magic" aria-label="checkbox include magic traits"/>
+            </div>
+            <label for="num-months">Include trauma?</label>
+            <div>
+            <input type="checkbox" name="include-trauma" aria-label="checkbox include traumatized traits"/>
+            </div>
+            <button type="submit">Generate</button>
+        </form>
+        <div id="gen_output"></div>
         <script>
-            console.log(generate_calendar(10, 0, true, false));
+            wh_gen_inputs.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const inputs = new FormData(wh_gen_inputs);
+                const num = inputs.get('num-months');
+                const start = inputs.get('start-month');
+                const magic = inputs.get('includ-magic');
+                const trauma = inputs.get('include-trauma');
+                const calendar = generate_calendar(num, start, magic, trauma);
+                
+                while(gen_output.firstChild) {
+                    gen_output.removeChild(gen_output.firstChild);
+                }
+
+                const new_dom = get_calendar_dom(calendar);
+                gen_output.appendChild(new_dom);
+            });
         </script>
     </body>
 </html>
