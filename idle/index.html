@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../common.css"/>
     <link rel="stylesheet" type="text/css" href="idle.css"/>
     <script src="idle.js"></script>
 </head>
 <body class="main-text" style="width: 100%; margin: 0px;">
-    <div style="padding: 2em 1em 0em 1em;">
+    <div style="padding: 1em;">
         <h2 class="centered-text" style="margin-top: 0px;">
             Fishing (for fishies)
         </h2>
@@ -19,85 +19,25 @@
                 keep the same game going on the same computer as long as you don't clear your cached data for this site!
             </p>
         </details>
-        <div class="game-board">
-            <div id="current-equip" class="column-group">
-                <div class="column">
-                    <span class="equip-name">Hand-me-down Rod</span>
-                </div>
-                <div class="column">
-                    <span>Currently Equiped</span>
-                </div>
-            </div>
-            <div id="funds">
-                <span>funds</span>
-                <span id="funds-text">
-                    $ 0.0
-                </span>
-            </div>
-            <div id="quick-stats">
-                <span>total fish caught</span>
-                <span id="fish-caught">0</span>
-            </div>
-            <div id="store">
-                <div class="store-upgrade column-group" id="iceboxes">
-                    <div class="column">
-                        <span class="upgr-name">Ice Boxes</span>
-                        <span class="upgr-desc">These will keep your fish fresh for longer, allowing you to sell them for a higher price. Sell price of all fish increases slightly.</span>
-                    </div>
-                    <div class="column">
-                        <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
-                        <button class="upgr-lvlup" onclick="improveUpgrade('iceboxes')">Lvl Up ($ 100.00)</button>
-                    </div>
-                </div>
-                <div class="store-upgrade column-group" id="fishing-robots">
-                    <div class="column">
-                        <span class="upgr-name">Fishing Robots</span>
-                        <span class="upgr-desc">Hire robots to fish for you - fishing robots periodically retrieve a bucket of multiple fish at once. Upgrade to increase the rate of bucket deliveries.</span>
-                    </div>
-                    <div class="column">
-                        <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
-                        <button class="upgr-lvlup" onclick="improveUpgrade('fishingrobots')">Lvl Up ($ 250.00)</button>
-                    </div>
-                </div>
-                <div class="store-upgrade column-group" id="fishcompression">
-                    <div class="column">
-                        <span class="upgr-name">Fish compression algorithm</span>
-                        <span class="upgr-desc">Significant investments into the field of stuffing fish into buckets has yielded new forbidden fish-folding techniques, increasing how many fish each bucket can hold.</span>
-                    </div>
-                    <div class="column">
-                        <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
-                        <button class="upgr-lvlup" onclick="improveUpgrade('fishcompression')">Lvl Up ($ 10.00K)</button>
-                    </div>
-                </div>
-                <div class="store-upgrade column-group" id="dagon">
-                    <div class="column">
-                        <span class="upgr-name">Rites of Dagon</span>
-                        <span class="upgr-desc">What you had to do was unspeakable, but sometimes that's just what fishing demands. Unnatural forces compel fish to grow larger in size, increasing the upper bounds on the sizes of all fish (bigger fish sell for more).</span>
-                    </div>
-                    <div class="column">
-                        <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
-                        <button class="upgr-lvlup" onclick="improveUpgrade('dagon')">Lvl Up ($ 5,000.00)</button>
-                    </div>
-                </div>
-                <div class="store-upgrade column-group" id="realitywarp">
-                    <div class="column">
-                        <span class="upgr-name">Uncanny control of probability</span>
-                        <span class="upgr-desc">Your vast collection of rabbit's feet, many-leafed clovers, paper cranes, and positive affirmations are finally paying off! This upgrade increases the likelyhoood of catching fish at higher rarities.</span>
-                    </div>
-                    <div class="column">
-                        <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
-                        <button class="upgr-lvlup" onclick="improveUpgrade('realitywarp')">Lvl Up ($ 100.00K)</button>
-                    </div>
-                </div>
-            </div>
-            <div id="inventory">
-                <div class="inventory-item column-group" id="rod-hand-me-down-rod"></div>
-                <div class="inventory-item column-group" id="rod-reef-scraper-5000"></div>
-                <div class="inventory-item column-group" id="rod-abyss-o-matic"></div>
-                <div class="inventory-item column-group" id="rod-aasimovian-tacklebox"></div>
-                <div class="inventory-item column-group" id="rod-rod-that-goes-up"></div>
-            </div>
+        <div id="menu">
+            <button class="green-btn" onclick="saveGame()">Save Game</button>
+            <button class="red-btn" onclick="resetGame()" style="float: right;">Reset Progress</button>
+        </div>
+        <div class="centered-game-view">
             <div id="fish-panel">
+                <div class="column-group stat-row">
+                    <div id="funds">
+                        <span>funds</span>
+                        <span id="funds-text">
+                            $ 0.0
+                        </span>
+                    </div>
+                    <div id="quick-stats">
+                        <span>total fish caught</span>
+                        <span id="fish-caught">0</span>
+                    </div>
+                </div>
+                
                 <button type="button" class="FISH" onclick="fishClick()">FISH!</button>
                 <span id="fps-parent">Auto-fish: recieve a bucket of
                     <span id="bucket-size">
@@ -111,10 +51,82 @@
                 </span>
                 <div id="fish-log"></div>
             </div>
-            <div id="menu">
-                <button class="green-btn" onclick="saveGame()">Save Game</button>
-                <button class="red-btn" onclick="resetGame()">Reset Progress</button>
+            
+            <div id="current-equip" class="column-group">
+                <div class="column">
+                    <span>Currently Equipped</span>
+                </div>
+                <div class="column">
+                    <span class="equip-name">Hand-me-down Rod</span>
+                </div>
             </div>
+            
+            <details>
+                <summary>Rods</summary>
+                <div id="inventory">
+                    <div class="inventory-item column-group" id="rod-hand-me-down-rod"></div>
+                    <div class="inventory-item column-group" id="rod-reef-scraper-5000"></div>
+                    <div class="inventory-item column-group" id="rod-abyss-o-matic"></div>
+                    <div class="inventory-item column-group" id="rod-aasimovian-tacklebox"></div>
+                    <div class="inventory-item column-group" id="rod-rod-that-goes-up"></div>
+                </div>
+            </details>
+            
+            <details>
+                <summary>Upgrade store</summary>
+                <div id="store">
+                    <div class="store-upgrade column-group" id="iceboxes">
+                        <div class="column">
+                            <span class="upgr-name">Ice Boxes</span>
+                            <span class="upgr-desc">These will keep your fish fresh for longer, allowing you to sell them for a higher price. Sell price of all fish increases slightly.</span>
+                        </div>
+                        <div class="column">
+                            <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
+                            <button class="upgr-lvlup" onclick="improveUpgrade('iceboxes')">Lvl Up ($ 100.00)</button>
+                        </div>
+                    </div>
+                    <div class="store-upgrade column-group" id="fishing-robots">
+                        <div class="column">
+                            <span class="upgr-name">Fishing Robots</span>
+                            <span class="upgr-desc">Hire robots to fish for you - fishing robots periodically retrieve a bucket of multiple fish at once. Upgrade to increase the rate of bucket deliveries.</span>
+                        </div>
+                        <div class="column">
+                            <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
+                            <button class="upgr-lvlup" onclick="improveUpgrade('fishingrobots')">Lvl Up ($ 250.00)</button>
+                        </div>
+                    </div>
+                    <div class="store-upgrade column-group" id="fishcompression">
+                        <div class="column">
+                            <span class="upgr-name">Fish compression algorithm</span>
+                            <span class="upgr-desc">Significant investments into the field of stuffing fish into buckets has yielded new forbidden fish-folding techniques, increasing how many fish each bucket can hold.</span>
+                        </div>
+                        <div class="column">
+                            <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
+                            <button class="upgr-lvlup" onclick="improveUpgrade('fishcompression')">Lvl Up ($ 10.00K)</button>
+                        </div>
+                    </div>
+                    <div class="store-upgrade column-group" id="dagon">
+                        <div class="column">
+                            <span class="upgr-name">Rites of Dagon</span>
+                            <span class="upgr-desc">What you had to do was unspeakable, but sometimes that's just what fishing demands. Unnatural forces compel fish to grow larger in size, increasing the upper bounds on the sizes of all fish (bigger fish sell for more).</span>
+                        </div>
+                        <div class="column">
+                            <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
+                            <button class="upgr-lvlup" onclick="improveUpgrade('dagon')">Lvl Up ($ 5,000.00)</button>
+                        </div>
+                    </div>
+                    <div class="store-upgrade column-group" id="realitywarp">
+                        <div class="column">
+                            <span class="upgr-name">Uncanny control of probability</span>
+                            <span class="upgr-desc">Your vast collection of rabbit's feet, many-leafed clovers, paper cranes, and positive affirmations are finally paying off! This upgrade increases the likelyhoood of catching fish at higher rarities.</span>
+                        </div>
+                        <div class="column">
+                            <span>Current Level: <span class="cur-upgr-lvl">0</span></span>
+                            <button class="upgr-lvlup" onclick="improveUpgrade('realitywarp')">Lvl Up ($ 100.00K)</button>
+                        </div>
+                    </div>
+                </div>
+            </details>
         </div>
         <details>
             <summary>Statistics</summary>

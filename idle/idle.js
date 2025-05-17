@@ -1135,6 +1135,8 @@ function gameInit() {
                     matchingStat.largest = loadedStat.largest;
                 }
             }
+        } else {
+            hideFishPerSec()
         }
     } catch(error) {
         console.warn("error occured loading state");
@@ -1457,14 +1459,26 @@ function updateFishPerSec() {
     let displayText = "";
     if (gameState.buckets_per_sec == 0) {
         displayText = formatFishPerSecNumber(0);
+        hideFishPerSec();
     } else {
         displayText = formatFishPerSecNumber(1 / gameState.buckets_per_sec)
+        showFishPerSec();
     }
     let uiElement = document.getElementById("bucket-persec");
     uiElement.innerText = displayText;
 
     let bucketCountElement = document.getElementById("bucket-size");
     bucketCountElement.innerText = gameState.bucket_size;
+}
+
+function hideFishPerSec() {
+    let elem = document.getElementById("fps-parent");
+    elem.style.display = "none";
+}
+
+function showFishPerSec() {
+    let elem = document.getElementById("fps-parent");
+    elem.style.display = "block";
 }
 
 function modifyAllFishPrices(factor) {
