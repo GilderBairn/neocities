@@ -1,0 +1,136 @@
+@font-face {
+    font-family: berry-rotunda;
+    src: url(../Berry_Rotunda.otf);
+}
+
+@font-face {
+    font-family: day-roman;
+    src: url(../DAYROM__.otf);
+}
+
+body {
+  font-family: day-roman;
+  background-color: #ffe5b3;
+  color: #15584d;
+}
+
+select {
+  background-color: #00000020;
+  border-radius: 4px;
+  padding: 8px;
+  border: none;
+}
+
+input, select, button, option {
+  color: #15584d;
+  font-family: day-roman;
+  font-size: 14pt;
+}
+
+input:checked {
+  background-color: red;
+}
+
+h1 {
+  font-family: berry-rotunda;
+  font-size: 24pt;
+  text-align: center;
+}
+
+summary {
+  font-family: berry-rotunda;
+}
+
+details > details, details > div {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 50em;
+  gap: 12px 1em;
+  justify-content: center;
+  margin: auto;
+  font-size: 14pt;
+}
+
+form > *{
+  flex-grow: 1;
+  flex-basis: 10em;
+}
+
+form > button {
+  max-width: 16em;
+}
+
+input[type$=checkbox] {
+  margin: 0px;
+}
+
+input[type$=number] {
+  background-color: #00000020;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type$=number]:focus-visible {
+  color: #15584d;
+}
+
+#gen_output {
+  margin: auto;
+  max-width: 60em;
+}
+
+.spacer {
+  flex-grow: 1;
+  flex-basis: 1px;
+}
+
+.center {
+  width: fit-content;
+  margin: auto;
+}
+
+.natures {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.natures > h4 {
+  flex-grow: 1;
+  flex-basis: 1em;
+  margin: 12px 0px;
+  font-family: berry-rotunda;
+  font-weight: normal;
+}
+
+.kith-root {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 50em;
+  margin: auto;
+}
+
+.kith {
+  max-width: 20em;
+  text-align: center;
+}
+
+.kith > h4 {
+  margin: 12px;
+  font-family: berry-rotunda;
+}
+
+.kith > h5 {
+  margin: 8px;
+  font-family: berry-rotunda;
+  font-weight: normal;
+}
+
+.kith > p {
+  font-family: day-roman;
+}
