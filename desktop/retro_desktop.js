@@ -92,7 +92,7 @@ function add_fishies_shortcut_listener() {
         const iframe = document.createElement('iframe');
         iframe.height = '500px';
         iframe.width = '900px';
-        iframe.src = 'idle/index.html';
+        iframe.src = '../idle/index.html';
         iframe.name = `fishies-${Math.floor(Math.random() * 10000)}`
         spawn_window("fishin' for  fishies", iframe);
     });

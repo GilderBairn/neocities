@@ -51,7 +51,6 @@
 
 body {
     margin: 0px;
-    overflow: hidden;
 }
 
 .desktop-bg {
@@ -162,7 +161,6 @@ body {
     padding: 2px;
 }
 
-/*
 a {
     text-decoration: none;
     margin: 0.5em 0.25em;
@@ -171,92 +169,88 @@ a {
 }
 
 .main-text {
-    color: #2F2537;
-    font-family: "Open Sans";
+    color: var(--cat-fg-light);
+    font-family: papernotes;
     font-size: 14pt;
-    font-weight: 450;
+    letter-spacing: 0.05em;
 }
 
 iframe {
     border: none;
-    width: 100%;
-    min-height: 0px;
-    overflow: auto;
 }
 
 a.lavender {
     color: var(--cat-lavender);
 }
-a.lavender:active, a.lavender:hover {
+a.lavender:active, a.lavender:hover, a.lavender[aria-current="page"] {
     background-color: var(--cat-lavender);
 }
 
 a.blue {
     color: var(--pico-powder-blue);
 }
-a.blue:active, a.blue:hover {
+a.blue:active, a.blue:hover, a.blue[aria-current="page"] {
     background-color: var(--pico-powder-blue);
 }
 
 a.green {
     color: var(--pico-lime);
 }
-a.green:active, a.green:hover {
+a.green:active, a.green:hover, a.green[aria-current="page"] {
     background-color: var(--pico-lime);
 }
 
 a.teal {
     color: var(--cat-teal);
 }
-a.teal:active, a.teal:hover {
+a.teal:active, a.teal:hover, a.teal[aria-current="page"] {
     background-color: var(--cat-teal);
 }
 
 a.pink {
     color: var(--pico-pink);
 }
-a.pink:active, a.pink:hover {
+a.pink:active, a.pink:hover, a.pink[aria-current="page"]{
     background-color: var(--pico-pink);
 }
 
 a.mauve {
     color: var(--cat-mauve);
 }
-a.mauve:active, a.mauve:hover {
+a.mauve:active, a.mauve:hover, a.mauve[aria-current="page"] {
     background-color: var(--cat-mauve);
 }
 
 a.peach {
     color: var(--cat-peach);
 }
-a.peach:active, a.peach:hover {
+a.peach:active, a.peach:hover, a.peach[aria-current="page"] {
     background-color: var(--cat-peach);
 }
 
 a.yellow {
     color: var(--pico-yellow);
 }
-a.yellow:active, a.yellow:hover {
+a.yellow:active, a.yellow:hover, a.yellow[aria-current="page"] {
     background-color: var(--pico-yellow);
 }
 
 a.red {
     color: var(--pico-red);
 }
-a.red:active, a.red:hover {
+a.red:active, a.red:hover, a.red[aria-current="page"]{
     background-color: var(--pico-red);
 }
 
 a.sapphire {
     color: var(--cat-sapphire);
 }
-a.sapphire:active, a.sapphire:hover {
+a.sapphire:active, a.sapphire:hover, a.sapphire[aria-current="page"] {
     background-color: var(--cat-sapphire);
 }
 
-a:hover {
-    color: #1A0420;
-    border-bottom: solid 2px var(--pico-purple);
+a:hover, a[aria-current="page"] {
+    color: var(--cat-bg-dark);
 }
 
 .splash-text {
@@ -284,8 +278,8 @@ body {
     margin: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: var(--pico-purple);
-    /*cursor: none;
+    background-color: var(--cat-bg-dark);
+    /*cursor: none;*/
 }
 
 #bg-container {
@@ -299,6 +293,8 @@ body {
 
 .glyphset {
     position: absolute;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 .glyphset.inverse {
@@ -307,21 +303,23 @@ body {
 
 .main-content-container {
     display: flex;
-    justify-content: left;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding: 2em 2em 0em 2em;
 }
 
 .pseudo-window {
     border-radius: 10px;
     border: solid var(--cat-bg-x-light) 5px;
-    background-color: #1A0420;
+    background-color: var(--cat-bg-dark);
     box-shadow: var(--cat-bg-x-light) 8px 8px 0px;
 }
 
 .main-panel {
     min-height: 20em;
     flex-basis: 35em;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -330,20 +328,19 @@ body {
 
 .menu-bar {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    max-width: 20em;
+    flex-wrap: wrap;
     padding: 1em;
 }
 
 .bean-profile {
     max-width: 80vw;
-    width: 30em;
+    width: 14em;
     margin-bottom: 1em;
     margin-left: 1.5em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: fit-content;
 }
 
 div.bean-profile img {
@@ -405,4 +402,4 @@ body.main-text p {
 .column {
     flex-basis: 10em;
     flex-grow: 1;
-}*/
+}
